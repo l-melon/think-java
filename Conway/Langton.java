@@ -68,5 +68,6 @@ public class Langton {
         frame.pack();
         frame.setVisible(true);
         game.mainloop();
+        
     }
 }
