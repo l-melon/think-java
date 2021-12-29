@@ -15,7 +15,7 @@ public class Conway {
    }
 
    private void mainloop() {
-       while (true) {
+       while (grid.countOn() > 0) {
            this.update();
            grid.repaint();
            try {

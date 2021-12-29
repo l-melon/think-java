@@ -19,7 +19,7 @@ public class Cell {
     public void draw(Graphics g) {
         g.setColor(COLORS[state]);
         g.fillRect(x + 1, y + 1, size - 1, size -1);
-        g.setColor(Color.RED);
+        g.setColor(Color.BLUE);
         g.drawRect(x, y, size, size);
     }
     

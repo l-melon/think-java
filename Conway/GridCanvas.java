@@ -52,8 +52,20 @@ public class GridCanvas extends Canvas{
                 return 1;
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            // cell doesn't exist
+            // cell doesn't exit
         }
         return 0;
+    }
+
+    public int countOn() {
+        int count = 0;
+        for (int r = 0; r < numRows(); r++) {
+            for (int c = 0; c < numCols(); c++) {
+                if (array[r][c].isOn()) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 }
