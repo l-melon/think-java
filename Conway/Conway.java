@@ -1,7 +1,6 @@
-import javax.swing.JFrame;
 
-public class Conway {
-   private GridCanvas grid;
+
+public class Conway extends Automaton {
    
    public Conway() {
        grid = new GridCanvas(20, 20, 20);
@@ -13,31 +12,19 @@ public class Conway {
        grid.turnOn(7, 3);
        grid.turnOn(7, 4);
    }
-
-   private void mainloop() {
-       while (grid.countOn() > 0) {
-           this.update();
-           grid.repaint();
-           try {
-               Thread.sleep(500);
-           } catch (InterruptedException e) {
-               // do nothing
-           }
-       }
-   }
    
-   private int countAlive(int r, int c) {
-    int count = 0;
-    count += grid.test(r - 1, c - 1);
-    count += grid.test(r - 1, c);
-    count += grid.test(r - 1, c + 1);
-    count += grid.test(r, c - 1);
-    count += grid.test(r, c);
-    count += grid.test(r, c + 1);
-    count += grid.test(r + 1, c - 1);
-    count += grid.test(r + 1, c);
-    count += grid.test(r + 1, c + 1);
-    return count;
+    private int countAlive(int r, int c) {
+        int count = 0;
+        count += grid.test(r - 1, c - 1);
+        count += grid.test(r - 1, c);
+        count += grid.test(r - 1, c + 1);
+        count += grid.test(r, c - 1);
+        count += grid.test(r, c);
+        count += grid.test(r, c + 1);
+        count += grid.test(r + 1, c - 1);
+        count += grid.test(r + 1, c);
+        count += grid.test(r + 1, c + 1);
+        return count;
     }
 
     public void update() {
@@ -85,12 +72,6 @@ public class Conway {
    public static void main(String[] args) {
        String title = "Conway's Game of Life";
        Conway game = new Conway();
-       JFrame frame = new JFrame(title);
-       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       frame.setResizable(false);
-       frame.add(game.grid);
-       frame.pack();
-       frame.setVisible(true);
-       game.mainloop();
+       game.run(title, 2);
    }
 }

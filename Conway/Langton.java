@@ -1,14 +1,11 @@
-import javax.swing.JFrame;
-
-public class Langton {
-    private GridCanvas grid;
+public class Langton extends Automaton{
     private int xpos;
     private int ypos;
     // {North, East, South, West}
     private int head; 
 
     public Langton(int rows, int cols) {
-        grid = new GridCanvas(rows, cols, 10);
+        grid = new GridCanvas(rows, cols, 5);
         xpos = rows / 2;
         ypos = cols / 2;
     }
@@ -46,28 +43,9 @@ public class Langton {
         }
     }
 
-    private void mainloop() {
-        while (true) {
-            this.update();
-            grid.repaint();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                // do nothing
-            }
-        }
-    }
-
     public static void main(String[] args) {
         String title = "Langton's Ant";
         Langton game = new Langton(100, 100);
-        JFrame frame = new JFrame(title);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.add(game.grid);
-        frame.pack();
-        frame.setVisible(true);
-        game.mainloop();
-        
+        game.run(title, 1000);
     }
 }

@@ -39,7 +39,8 @@ public class GridCanvas extends Canvas{
     }
 
     public Cell getCell(int r, int c) {
-        return array[r][c];
+        return array[(r % numRows() + numRows()) % numRows()]
+                    [(c % numCols() + numCols()) % numCols()];
     }
 
     public void turnOn(int r, int c) {
