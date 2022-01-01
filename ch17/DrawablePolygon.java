@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
-public class DrawablePolygon extends Polygon{
+public class DrawablePolygon extends Polygon implements Actor{
 
     protected Color color;
 
@@ -22,5 +22,11 @@ public class DrawablePolygon extends Polygon{
         p.addPoint(100, 35);
         p.addPoint(143, 110);
         p.color = Color.GREEN;
+    }
+
+    @Override
+    public void step() {
+        // TODO Auto-generated method stub
+        
     }
 }

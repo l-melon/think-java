@@ -1,8 +1,27 @@
 import java.awt.Color;
 
 public class RegularPolygon extends DrawablePolygon{
+
+    public RegularPolygon(int nsides, int radius) {
+        this(nsides, radius, Color.GRAY);
+    }
+
+    public RegularPolygon(int nsides) {
+        this(nsides, 50);
+    }
     
     public RegularPolygon(int nsides, int radius, Color color) {
+
+        // validate the argument
+        if (nsides < 3) {
+            throw new IllegalArgumentException("invaild nsides");
+        }
+        if (radius <= 0) {
+            throw new IllegalArgumentException("invaild radius");
+        }
+        if (color == null) {
+            throw new NullPointerException("invaild color");
+        }
 
         // initialize Drawable attributes
         this.npoints = nsides;
@@ -23,7 +42,7 @@ public class RegularPolygon extends DrawablePolygon{
     }
 
     public static void main(String[] args) {
-        RegularPolygon rp = new RegularPolygon(6, 50, Color.BLUE);
+        RegularPolygon rp = new RegularPolygon(6);
         rp.translate(100, 100);
     }
 }
